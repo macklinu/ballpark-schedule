@@ -1,5 +1,7 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+
 <p align="center">
   <a href="https://gatsby-typescript-tailwind.netlify.com/">
     <img alt="Gatsby TypeScript Tailwind" src="./docs/logo.svg" width="230" />
