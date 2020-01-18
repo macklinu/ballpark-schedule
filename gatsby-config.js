@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Typescript Tailwind`,
@@ -48,8 +50,19 @@ module.exports = {
         },
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-source-apiserver',
+      options: {
+        url:
+          'http://statsapi.mlb.com/api/v1/schedule?sportId=1&gameType=R&startDate=2020-05-21&endDate=2020-06-07&hydrate=venue(location),team',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        name: 'dates',
+        entityLevel: 'dates',
+        localSave: true,
+        path: `${__dirname}/src/data/`,
+      },
+    },
   ],
 }
