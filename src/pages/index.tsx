@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import ReactMapGL, { Marker, NavigationControl, Popup } from 'react-map-gl'
 import cx from '@macklinu/cx'
 import moment from 'moment'
+import { GetScheduleQuery } from '../../graphql-types'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
 interface Coordinates {
@@ -137,8 +138,8 @@ const GamePopup: React.FC<{ onClose(): void; game: any }> = ({
 )
 
 const Index: React.FC = () => {
-  const data = useStaticQuery(graphql`
-    {
+  const data = useStaticQuery<GetScheduleQuery>(graphql`
+    query GetSchedule {
       allDates(filter: { id: { ne: "dummy" } }) {
         nodes {
           id
@@ -208,7 +209,7 @@ const Index: React.FC = () => {
         }
         keyboard={false}
       >
-        {games.map((game: any) => {
+        {(games ?? []).map((game: any) => {
           const coordinates = coordinatesForGame(game)
           return (
             <Marker
